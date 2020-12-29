@@ -3,17 +3,16 @@
 </template>
 
 <script>
-import 'animate.css'
+import "animate.css";
 
 export default {
-  name: 'App',
-  components: {
-  }
-}
+  name: "App",
+  components: {},
+};
 </script>
 
 <style>
-:root{
+:root {
   --color-text: #e9ecef;
   --color-text-dark: #dee2e6;
 
@@ -29,8 +28,8 @@ export default {
   --color-success: #52b788;
   --color-success-dark: #40916c;
 
-  --color-danger: #D62839;
-  --color-danger-dark: #B22D3A;
+  --color-danger: #ef233c;
+  --color-danger-dark: #d90429;
 
   --shadow-clean: #adb5bd;
   --shadow-dark: #495057;
@@ -42,7 +41,8 @@ export default {
   box-sizing: border-box;
 }
 
-html, body{
+html,
+body {
   width: 100vw;
   height: 100vh;
   margin: 0 auto;
@@ -72,89 +72,99 @@ html, body{
   position: relative;
 }
 
-.box{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+.box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-        width: 320px;
-        max-width: 95%;
-        height: 320px;
+  width: 320px;
+  max-width: 95%;
+  height: 320px;
 
-        margin: 0 auto;
-        padding: 16px;
+  margin: 0 auto;
+  padding: 16px;
 
-        background: var(--color-primary-dark);
+  background: var(--color-primary-dark);
 
-        border-radius: .8rem;
+  border-radius: 0.8rem;
 
-        box-shadow: 1px 1px 8px var(--shadow-clean);
-    }
+  box-shadow: 1px 1px 8px var(--shadow-clean);
+}
 
-    h1{
-        color: var(--color-text);
-        font-size: 2.5rem;
+h1 {
+  color: var(--color-text);
+  font-size: 2.5rem;
 
-        text-shadow: 1px 1px 5px var(--shadow-dark);
+  text-shadow: 1px 1px 5px var(--shadow-dark);
 
-        margin: 0 auto 1.2rem;
-    }
+  margin: 0 auto 1.2rem;
+}
 
-    .col{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
+.col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 
-    .btn{
-        width: 90%;
-        max-width: 300px;
-        margin: 0 auto .8rem;
+.btn {
+  width: 90%;
+  max-width: 300px;
+  margin: 0 auto 0.8rem;
 
-        padding: .8rem;
+  padding: 0.8rem;
 
-        border-radius: .4rem;
+  border-radius: 0.4rem;
 
-        color: var(--color-text-dark);
-        font-size: 1.5rem;
+  color: var(--color-text-dark);
+  font-size: 1.5rem;
 
-        cursor: pointer;
+  cursor: pointer;
 
-        transition: .8s;
+  transition: 0.8s;
 
-        text-decoration: none;
-    }
+  text-decoration: none;
 
-    .btn:hover{
-        transform: translateY(-2px);
-        color: var(--color-text);
-        box-shadow: 1px 1px 5px var(--shadow-dark);
-    }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    .success{
-        background: var(--color-success);
-    }
+.btn:hover {
+  transform: translateY(-2px);
+  color: var(--color-text);
+  box-shadow: 1px 1px 5px var(--shadow-dark);
+}
 
-    .success:hover{
-        background-color: var(--color-success-dark);
-    }
+.success {
+  background: var(--color-success);
+}
 
-    .blue{
-        background-color: var(--color-secondary);
-    }
+.success:hover {
+  background-color: var(--color-success-dark);
+}
 
-    .blue:hover{
-        background-color: var(--color-secondary-dark);
-    }
+.blue {
+  background-color: var(--color-secondary);
+}
 
-    .blue-dark{
-        background-color: var(--color-terciary);
-    }
+.blue:hover {
+  background-color: var(--color-secondary-dark);
+}
 
-    .blue-dark:hover{
-        background-color: var(--color-terciary-dark);
-    }
+.blue-dark {
+  background-color: var(--color-terciary);
+}
 
+.blue-dark:hover {
+  background-color: var(--color-terciary-dark);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+
+  margin: 0 0.4rem;
+}
 </style>

@@ -1,53 +1,61 @@
 <template>
-    <div id="register" class="box col">
-        <h1 class="animate__animated  animate__rubberBand">Jokenpo</h1>
-        <p>Digite seu nome:</p>
-        <input v-model="name" type="text" name="name" id="player_name" placeholder="Nome...">
+  <div id="register" class="box col">
+    <h1 class="animate__animated animate__rubberBand">Jokenpo</h1>
+    <p>Digite seu nome:</p>
+    <input
+      v-model="name"
+      type="text"
+      name="name"
+      id="player_name"
+      placeholder="Nome..."
+    />
 
-        <router-link 
-            class="btn success" 
-            to="/game" exact>Jogar</router-link>
+    <router-link class="btn success" to="/game" exact>
+      <fa icon="play" class="icon"></fa>
+      Jogar
+    </router-link>
 
-        <router-link class="btn blue" to="/" exact>Voltar</router-link>
-    </div>
+    <router-link class="btn blue" to="/" exact>
+      <fa icon="arrow-left" class="icon"></fa>
+      Voltar
+    </router-link>
+  </div>
 </template>
 
 <script>
-
 export default {
-    name: 'Register',
-    data(){
-        return{
-            name: 'Padauã'
-        }
-    },
-}
+  name: "Register",
+  data() {
+    return {
+      name: "Padauã",
+    };
+  },
+};
 </script>
 
 <style scoped>
+#register input {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  outline: none;
 
-    #register input{
-        -moz-appearance: none;
-        -webkit-appearance: none;
-        appearance: none;
-        border: none;
-        outline: none;
+  width: 90%;
+  margin: 0 auto 0.8rem;
 
-        width: 90%;
-        margin: 0 auto .8rem;
+  padding: 0.8rem;
 
-        padding: .8rem;
+  border-radius: 0.4rem;
+}
 
-        border-radius: .4rem;
-    }
+#register p {
+  margin: 0 auto 0.8rem;
 
-    #register p{
-        margin: 0 auto .8rem;
+  font-size: 1.5rem;
 
-        font-size: 1.5rem;
+  text-align: left;
 
-        text-align: left;
-
-        text-shadow: 1px 1px 5px var(--shadow-dark);
-    }
+  text-shadow: 1px 1px 5px var(--shadow-dark);
+}
 </style>
