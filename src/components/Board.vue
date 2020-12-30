@@ -4,15 +4,17 @@
       <div class="moves">
         <div>
           <fa
-            class="icon animate__wobble animate__animated"
+            class="icon animate__animated"
+            :class="playerAnimated"
             :icon="playerMove"
           ></fa>
         </div>
         <span class="vs">vs</span>
         <div>
           <fa
-            class="icon animate__wobble animate__animated"
+            class="icon animate__animated"
             :icon="computerMove"
+            :class="botAnimated"
           ></fa>
         </div>
       </div>
@@ -54,6 +56,18 @@ export default {
         animate__shakeY: this.winner === "p1",
         animate__shakeX: this.winner === "bot",
         animate__swing: this.winner === "tie",
+      };
+    },
+    playerAnimated() {
+      return {
+        animate__shakeY: this.winner === "p1",
+        animate__tada: this.winner !== "p1",
+      };
+    },
+    botAnimated() {
+      return {
+        animate__shakeY: this.winner === "bot",
+        animate__tada: this.winner !== "bot",
       };
     },
   },
@@ -110,6 +124,9 @@ export default {
   background-color: #ffd166;
 
   border-radius: 0.4rem;
+
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .win {
