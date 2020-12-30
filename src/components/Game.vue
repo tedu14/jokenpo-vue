@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <h1 class="animate__animated animate__rubberBand">Jokenpo</h1>
+    <Placar :placarPlayer="placar.player" :placarBot="placar.bot" />
     <div class="content-board">
       <Player @player-choose="playerMove" />
       <Board
@@ -25,6 +26,7 @@
 <script>
 import Board from "./Board";
 import Player from "./Player";
+import Placar from "./Placar";
 
 const moves = {
   rock: {
@@ -48,12 +50,17 @@ export default {
   components: {
     Board,
     Player,
+    Placar,
   },
   data() {
     return {
       playerChoose: "question",
       computerChoose: "question",
       winner: "",
+      placar: {
+        player: 0,
+        bot: 0,
+      },
     };
   },
   methods: {
@@ -65,6 +72,22 @@ export default {
       this.computerChoose = bot.icon;
 
       this.winner = this.checkWinner(player.value, bot.value);
+
+      const storageFormat = {
+        name: localStorage.getItem("player:name"),
+        move: player,
+        winner: this.winner,
+      };
+
+      const playerStorage = JSON.parse(localStorage.getItem("player:storage"));
+
+      if (playerStorage) {
+        playerStorage.push(storageFormat);
+
+        localStorage.setItem("player:storage", JSON.stringify(playerStorage));
+      } else {
+        localStorage.setItem("player:storage", JSON.stringify([storageFormat]));
+      }
     },
 
     genBotMove() {
@@ -88,23 +111,28 @@ export default {
       switch (playerOpt) {
         case 0:
           if (Math.abs(playerOpt - botOpt) === -1) {
+            this.placar.bot++;
             return "bot";
           } else {
+            this.placar.player++;
             return "p1";
           }
 
         case 1:
           if (Math.abs(playerOpt - botOpt) === -1) {
+            this.placar.bot++;
             return "bot";
-          }
-          {
+          } else {
+            this.placar.player++;
             return "p1";
           }
 
         case 2:
           if (Math.abs(playerOpt - botOpt) === 2) {
+            this.placar.bot++;
             return "bot";
           } else {
+            this.placar.player++;
             return "p1";
           }
       }
@@ -129,6 +157,8 @@ export default {
   margin: 0 auto;
 
   padding: 0 15px;
+
+  text-shadow: 1px 1px 2px var(--shadow-dark);
 }
 
 .content-board {
@@ -160,5 +190,9 @@ export default {
   height: 100px;
 
   margin: 0 auto;
+}
+
+.bot-name {
+  text-shadow: 1px 1px 5px var(--shadow-dark);
 }
 </style>
