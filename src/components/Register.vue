@@ -23,8 +23,6 @@
 </template>
 
 <script>
-import fetcher from "../hooks/fetcher";
-
 export default {
   name: "Register",
   data() {
@@ -34,11 +32,7 @@ export default {
   },
   methods: {
     registerPlayer() {
-      const { data } = fetcher().registerPlayer({ name: this.name });
-
-      if (data.value) {
-        this.name = data.value.name;
-      }
+      localStorage.setItem("player:name", this.name);
     },
   },
 };
