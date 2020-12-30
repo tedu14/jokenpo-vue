@@ -13,7 +13,7 @@
       target="_blank"
       rel="noopener noreferrer"
       class="btn blue"
-      href="https://github.com/tedu14/jokenpo-frontend-vue"
+      href="https://github.com/tedu14/jokenpo-vue"
     >
       <fa icon="code" class="icon"></fa>
       Codebase
