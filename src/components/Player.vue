@@ -5,7 +5,8 @@
       src="../assets/player.png"
       alt="Player profile"
     />
-    <span class="player-name">Player</span>
+    <span class="player-name">{{ name }}</span>
+    <span class="text">Escolha sua jogada:</span>
     <div class="player-moves">
       <fa icon="hand-rock" class="icon" @click="handleMove('rock')"></fa>
       <fa icon="hand-paper" class="icon" @click="handleMove('paper')"></fa>
@@ -17,6 +18,14 @@
 <script>
 export default {
   name: "Player",
+  data() {
+    return {
+      name: "",
+    };
+  },
+  beforeMount() {
+    this.name = localStorage.getItem("player:name");
+  },
   methods: {
     handleMove(move) {
       this.$emit("player-choose", move);
@@ -35,6 +44,8 @@ export default {
 
   padding: 0.8rem;
   border-radius: 0.4rem;
+
+  text-shadow: 1px 1px 5px var(--shadow-dark);
 }
 
 .player-profile {
@@ -69,5 +80,9 @@ export default {
 
 .icon:hover {
   color: #ffd166;
+}
+
+.text {
+  margin: 0 auto 0.4rem;
 }
 </style>
