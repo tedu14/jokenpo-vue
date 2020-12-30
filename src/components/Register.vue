@@ -10,7 +10,7 @@
       placeholder="Nome..."
     />
 
-    <router-link class="btn success" to="/game" exact>
+    <router-link @click="registerPlayer" class="btn success" to="/game" exact>
       <fa icon="play" class="icon"></fa>
       Jogar
     </router-link>
@@ -23,12 +23,23 @@
 </template>
 
 <script>
+import fetcher from "../hooks/fetcher";
+
 export default {
   name: "Register",
   data() {
     return {
       name: "Padauã",
     };
+  },
+  methods: {
+    registerPlayer() {
+      const { data } = fetcher().registerPlayer({ name: this.name });
+
+      if (data.value) {
+        this.name = data.value.name;
+      }
+    },
   },
 };
 </script>

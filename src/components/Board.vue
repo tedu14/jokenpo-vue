@@ -5,18 +5,21 @@
         <div>
           <fa
             class="icon animate__wobble animate__animated"
-            icon="hand-rock"
+            :icon="playerMove"
           ></fa>
         </div>
         <span class="vs">vs</span>
         <div>
           <fa
             class="icon animate__wobble animate__animated"
-            icon="hand-scissors"
+            :icon="computerMove"
           ></fa>
         </div>
       </div>
-      <span class="result" v-bind:class="classColors">
+      <span
+        class="result animate__animated"
+        v-bind:class="[classColors, classAnimated]"
+      >
         {{ checkGameMessage() }}
       </span>
     </div>
@@ -34,8 +37,8 @@ const gameMessages = {
 export default {
   name: "Board",
   props: {
-    playerMove: Object,
-    computerMove: Object,
+    playerMove: String,
+    computerMove: String,
     winner: String,
   },
   computed: {
@@ -44,6 +47,13 @@ export default {
         win: this.winner === "p1",
         lose: this.winner === "bot",
         tie: this.winner === "tie",
+      };
+    },
+    classAnimated() {
+      return {
+        animate__shakeY: this.winner === "p1",
+        animate__shakeX: this.winner === "bot",
+        animate__swing: this.winner === "tie",
       };
     },
   },
@@ -77,11 +87,10 @@ export default {
 
 <style scoped>
 .box-board {
-  width: 95%;
-  max-width: 480px;
+  width: 480px;
 
   padding: 1.2rem 0.8rem;
-  margin: 0 auto 1.2rem;
+  margin: 0.8rem auto;
 
   background-color: var(--color-primary-dark);
 
@@ -93,7 +102,7 @@ export default {
 .result {
   width: 80%;
 
-  margin: 0 auto;
+  margin: 0.8rem auto 0;
   padding: 0.8rem 1.2rem;
 
   box-shadow: 1px 1px 5px var(--shadow-clean);
@@ -118,7 +127,7 @@ export default {
 .moves {
   width: 100%;
 
-  margin: 0 auto 0.8rem;
+  margin: 0 auto;
 
   display: flex;
   align-items: center;
@@ -135,5 +144,15 @@ export default {
   text-transform: uppercase;
 
   font-size: 1.5rem;
+}
+
+@media screen and (max-width: 726px) {
+  .moves {
+    flex-direction: column;
+  }
+
+  .vs {
+    margin: 0.8rem auto;
+  }
 }
 </style>
